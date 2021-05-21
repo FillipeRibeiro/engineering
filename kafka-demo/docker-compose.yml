@@ -1,0 +1,12 @@
+# UPDATE ALL THE DEPENDENCIES TO docker-compose
+# comands to setup dependencies
+# network
+docker network create kafka-net --driver bridge
+# zookeeper
+docker run --name zookeeper-server -p 2181:2181 --network kafka-net -e ALLOW_ANONYMOUS_LOGIN=yes zookeeper -d
+# kafka
+docker run --name kafka-server --network kafka-net
+-e KAFKA_ZOOKEEPER_CONNECT=zookeeper-server:2181 
+-e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 
+-e KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1 
+-p 9092:9092 confluentinc/cp-kafka
