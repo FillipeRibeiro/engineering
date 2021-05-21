@@ -1,0 +1,25 @@
+### GET ALL
+GET http://localhost:3000/subscribers
+
+### GET ONE
+GET http://localhost:3000/subscribers/5fb4939d19451f3f68ad8cf9
+
+### CREATE ONE
+POST http://localhost:3000/subscribers
+Content-Type: application/json
+
+{
+    "name": "Gains Brah",
+    "subscribedToChannel": "How to beast!"
+}
+
+### UPDATE ONE
+PATCH http://localhost:3000/subscribers/5fb4939d19451f3f68ad8cf9
+Content-Type: application/json
+
+{
+    "subscribedToChannel": "How to Beast"
+}
+
+### DELETE ONE
+DELETE http://localhost:3000/subscribers/5fb49017700e813aadf34924
